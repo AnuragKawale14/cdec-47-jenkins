@@ -32,7 +32,7 @@ pipeline {
         }
            stage('Artifatory-stage') {
             steps {
-               sh 'aws s3 cp  target/studentapp-2.2-SNAPSHOT.war  s3://mybuck-00759746/'
+               sh 'aws s3 cp target/studentapp-2.2-SNAPSHOT.war  s3://amz-01-buck/'
             }
         }
 
