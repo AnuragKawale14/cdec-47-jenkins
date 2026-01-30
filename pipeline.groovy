@@ -30,15 +30,15 @@ pipeline {
                 waitForQualityGate true
             }
         }
-           stage('Artifatory-stage') {
-              steps {
-                 sh 'aws s3 cp target/studentapp-2.2-SNAPSHOT.war  s3://amz-01-buck/'
-            }
-        }
+        //    stage('Artifatory-stage') {
+        //       steps {
+        //          sh 'aws s3 cp target/studentapp-2.2-SNAPSHOT.war  s3://amz-01-buck/'
+        //     }
+        // }
 
          stage('deploy-stage') {
             steps {
-                echo 'code deploy sucessfully'
+               deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'tomcat-cred', path: '', url: 'http://16.171.10.83:8080/')], contextPath: '/', war: '**/*.war'
             }
         }
     }
